@@ -27,6 +27,14 @@ const solve = (day, task, example) => {
   return { result, check };
 };
 
+const isLowerCase = (char) => char === char.toLowerCase();
+const getIntersection = (arr1, arr2) =>
+  arr1.filter((val) => arr2.includes(val));
+const getUnique = (arr) => [...new Set(arr)];
+
 module.exports = {
   solve,
+  isLowerCase,
+  getIntersection,
+  getUnique,
 };
