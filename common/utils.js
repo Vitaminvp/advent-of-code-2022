@@ -32,9 +32,14 @@ const getIntersection = (arr1, arr2) =>
   arr1.filter((val) => arr2.includes(val));
 const getUnique = (arr) => [...new Set(arr)];
 
+const isUnique = (array) => {
+  return new Set(array).size === array.length;
+};
+
 module.exports = {
   solve,
   isLowerCase,
   getIntersection,
   getUnique,
+  isUnique,
 };

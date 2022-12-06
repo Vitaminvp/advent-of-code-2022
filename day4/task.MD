@@ -66,4 +66,4 @@ _In how many assignment pairs do the ranges overlap?_
 
 Your puzzle answer was `835`.
 
-Both parts of this puzzle are complete! They provide two gold stars: *
+Both parts of this puzzle are complete! They provide two gold stars: **
