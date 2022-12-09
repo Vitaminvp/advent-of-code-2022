@@ -36,10 +36,15 @@ const isUnique = (array) => {
   return new Set(array).size === array.length;
 };
 
+const isIntNum = (n) => {
+  return !isNaN(parseInt(n)) && isFinite(n);
+};
+
 module.exports = {
   solve,
   isLowerCase,
   getIntersection,
   getUnique,
   isUnique,
+  isIntNum,
 };
