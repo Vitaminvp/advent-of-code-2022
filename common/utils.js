@@ -1,12 +1,22 @@
 const fs = require("fs");
 
+const getInput = (task, example, folder) => {
+  try {
+    if (!example) return fs.readFileSync(`${folder}/input.txt`);
+
+    const text = fs.readFileSync(`${folder}/example${task}.txt`);
+
+    if (text) return text;
+  } catch (err) {
+    return fs.readFileSync(`${folder}/example.txt`);
+  }
+};
+
 const solve = (day, task, example) => {
+  const root = `${__dirname}/../day${day}`;
   const startTime = new Date();
-  const solver = require(`./../day${day}/solve${task}`);
-  const text = fs
-    .readFileSync(
-      `${__dirname}/../day${day}/${example ? "example" : "input"}.txt`
-    )
+  const solver = require(`${root}/solve${task}`);
+  const text = getInput(task, example, root)
     .toString()
     .replace(/\n+$/, "")
     .split("\n");
@@ -16,7 +26,7 @@ const solve = (day, task, example) => {
   const timeDiff = (endTime - startTime) / 1000;
   const expected = example ? solver.exampleResult : solver.result;
   const check = expected === result;
-  const exampleStr = example ? `,EXAMPLE ${example}` : "";
+  const exampleStr = example ? `,EXAMPLE ${task}` : "";
   console.log(
     check ? "\u2705" : "\u274C",
     `DAY ${day}, TASK ${task} ${exampleStr}`

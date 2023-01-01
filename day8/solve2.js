@@ -15,10 +15,10 @@ const solve = (input) => {
       const above = transposedMatrix[col].slice(0, row).reverse();
       const under = transposedMatrix[col].slice(row + 1);
 
-      const sum = [before, after, above, under].reduce((acc, cur) => {
-        const idx = cur.before.findIndex((num) => num >= cur[col]);
+      const sum = [before, after, above, under].reduce((acc, next) => {
+        const idx = next.findIndex((num) => num >= cur[col]);
 
-        return acc * idx >= 0 ? idx + 1 : cur.length;
+        return acc * (idx >= 0 ? idx + 1 : next.length);
       }, 1);
 
       sumList.push(sum);
